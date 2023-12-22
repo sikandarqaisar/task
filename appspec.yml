@@ -3,6 +3,7 @@ os: linux
 files:
   - source: scripts/index.html
     destination: /usr/share/nginx/html/
+    overwrite: true
 hooks:
   AfterInstall:
     - location: scripts/restart_script.sh
