@@ -56,6 +56,46 @@ module "IAM_Role" {
   PATH                    = "/"
 }
 
+module "IAM_Policy_Pipeline" {
+  source            = "./modules/IAM_Policy/"
+  NAME              = "${var.NAME}-pipelinePolicy"
+  DESCRIPTION       = "Pipeline role policy for S3"
+  POLICY            = {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPipelineBucket",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:AbortMultipartUpload",
+                "s3:ListBucket",
+                "s3:DeleteObject",
+                "s3:GetObjectVersion",
+                "s3:ListMultipartUploadParts"
+            ],
+            "Resource": [
+                "arn:aws:s3:::${module.S3.S3_BUCKET_NAME}/*",
+                "arn:aws:s3:::${module.S3.S3_BUCKET_NAME}"
+            ]
+        },
+        {
+            "Sid": "AllowCodedeployToCreateDeployment",
+            "Effect": "Allow",
+            "Action": [
+              "codedeploy:CreateDeployment",
+              "codedeploy:GetApplicationRevision",
+              "codedeploy:GetDeployment",
+              "codedeploy:GetDeploymentConfig",
+              "codedeploy:RegisterApplicationRevision"
+            ]
+            "Resource": "*"
+        }        
+    ]
+  }
+}
+
 module "IAM_Role_Pipeline" {
   source                  = "./modules/IAM_Role/"
   COMMON_TAGS             = local.common_tags
@@ -72,7 +112,7 @@ module "IAM_Role_Pipeline" {
                               }
                             ]
   CREATE_INSTANCE_PROFILE = false
-  POLICIES_ARN            = ["arn:aws:iam::aws:policy/AmazonSSMFullAccess", "arn:aws:iam::aws:policy/AmazonEC2FullAccess", ]
+  POLICIES_ARN            = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy", "arn:aws:iam::aws:policy/AmazonEC2FullAccess", "${module.IAM_Policy_Pipeline.IAM_POLICY_ARN}" ]
   PATH                    = "/"
 }
 
@@ -257,11 +297,12 @@ module "CodePipeline" {
         BranchName= null
         S3Bucket= null
         S3ObjectKey= null
-        Owner= "sikandarqaisarch"
+        Owner= "sikandarqaisar"
         Repo= "task"
         PollForSourceChanges= true
         Branch= "main"
-        OAuthToken= "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"
+#        OAuthToken= "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"
+        OAuthToken= "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"
       }
     }
   ]
@@ -322,4 +363,7 @@ module "CodePipeline" {
       }
     }
   ]
+}
+output "codedeploy"{
+  value = module.CodePipeline.CODE_DEPLOY_DEPLOYMENT_GROUP_ARN
 }
