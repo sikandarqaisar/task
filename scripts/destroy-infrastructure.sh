@@ -1,3 +1,3 @@
 #!/bin/bash
-cd terraform
+cd ../terraform
 terraform destroy --var-file=dev.tfvars --auto-approve
