@@ -52,7 +52,7 @@ module "IAM_Role" {
                               }
                             ]
   CREATE_INSTANCE_PROFILE = true
-  POLICIES_ARN            = ["arn:aws:iam::aws:policy/AmazonSSMFullAccess"]
+  POLICIES_ARN            = ["arn:aws:iam::aws:policy/AmazonSSMFullAccess", "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy"]
   PATH                    = "/"
 }
 
@@ -321,7 +321,7 @@ module "CodePipeline" {
       app_name= "ec2Deploy"
       deployment_group_name= "ec2Deploy"
       service_role_arn= module.IAM_Role_Pipeline.IAM_ROLE_ARN
-      deployment_config_name= "ec22Deploy"
+      deployment_config_name= "CodeDeployDefault.AllAtOnce"
       autoscaling_groups = [module.AutoScaling1.AUTOSCALING_GROUP_NAME]
       auto_rollback_configuration= [
           {
