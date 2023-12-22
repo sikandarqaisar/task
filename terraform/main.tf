@@ -112,7 +112,7 @@ module "IAM_Role_Pipeline" {
                               }
                             ]
   CREATE_INSTANCE_PROFILE = false
-  POLICIES_ARN            = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy", "arn:aws:iam::aws:policy/AmazonEC2FullAccess", "${module.IAM_Policy_Pipeline.IAM_POLICY_ARN}" ]
+  POLICIES_ARN            = ["arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy", "arn:aws:iam::aws:policy/AmazonEC2FullAccess", "${module.IAM_Policy_Pipeline.IAM_POLICY_ARN}"]
   PATH                    = "/"
 }
 
@@ -295,8 +295,7 @@ module "CodePipeline" {
         Repo= "task"
         PollForSourceChanges= true
         Branch= "main"
-#        OAuthToken= "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"
-        OAuthToken= "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"
+        OAuthToken= ""
       }
     }
   ]

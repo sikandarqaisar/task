@@ -2,7 +2,7 @@
 yum update -y 
 sudo yum install ruby -y 
 sudo yum install wget -y 
-wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
+wget https://aws-codedeploy-us-east-2.s3.amazonaws.com/latest/install
 chmod +x ./install
 sudo ./install auto
 amazon-linux-extras install nginx1.12
