@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: scripts/index.html
-    destination: /usr/share/nginx/html/index.html
+    destination: /usr/share/nginx/html/
 hooks:
   AfterInstall:
     - location: scripts/restart_script.sh
