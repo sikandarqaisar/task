@@ -111,11 +111,6 @@ resource "aws_codepipeline" "pipeline" {
           owner    = lookup(action.value, "owner", "")
           provider = lookup(action.value, "provider", "")
           version  = lookup(action.value, "version", null)
-          configuration = {
-            NotificationArn = action.value.configuration["NotificationArn"]
-            CustomData      = action.value.configuration["CustomData"]
-            #ExternalEntityLink = "${var.approve_url}"
-          }
         }
       }
     }

@@ -331,7 +331,16 @@ module "CodePipeline" {
       ]
     }   
   ]
-  DEPLOY_APPROVAL= []
+  DEPLOY_APPROVAL= [{
+      name = "Approve"
+      action = [{
+        name     = "Approval"
+        category = "Approval"
+        owner    = "AWS"
+        provider = "Manual"
+        version  = "1"
+      }]
+}]
   DEPLOY_ACTION= [
     {
       name= "Deploy"
