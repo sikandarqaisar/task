@@ -17,7 +17,7 @@ Before you begin, ensure you have the following:
 - [Terraform](https://www.terraform.io/) installed on your machine.
 - AWS credentials configured with the necessary permissions.
 
-## Project Structure
+## Terraform Structure
 
 ```plaintext
 
@@ -28,11 +28,18 @@ Before you begin, ensure you have the following:
 ├── iam_role.tf
 ├── s3.tf
 ├── security_group.tf
+└── variables.tf
+```
+
+## Script Structure
+
+```plaintext
+
 ├── deploy-infrastructure.sh
 ├── destroy-infrastructure.sh
 ├── update_to_carol.sh
 ├── revert_to_frank.sh
-└── variables.tf
+└── restart_script.sh
 ```
 
 ## Usage
