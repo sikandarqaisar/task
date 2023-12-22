@@ -20,7 +20,7 @@ Before you begin, ensure you have the following:
 ## Project Structure
 
 ```plaintext
-.
+
 ├── alb.tf
 ├── vpc.tf
 ├── autoscaling.tf
@@ -33,33 +33,40 @@ Before you begin, ensure you have the following:
 ├── update_to_carol.sh
 ├── revert_to_frank.sh
 └── variables.tf
+```
 
 ## Usage
 Clone the Repository:
-
+```bash
 git clone https://github.com/sikandarqaisar/task
 cd terraform
+```
 Set AWS Credentials:
 
 
 ## Create Infrastructure:
 
 Run the deployment script to create the infrastructure:
+```bash
 ./deploy-infrastructure.sh
+```
 
 Update Code on EC2:
 
 To update code directly on an EC2 instance, run:
-
+```bash
 ./update_to_carol.sh
+```
 
 Revert Code to Frank:
 
 To revert code to Frank on an EC2 instance, run:
-
+```bash
 ./revert_to_frank.sh
+```
 Destroy Infrastructure:
 
 After using the infrastructure, run the destroy script to clean up resources:
-
+```bash
 ./destroy-infrastructure.sh
+```
