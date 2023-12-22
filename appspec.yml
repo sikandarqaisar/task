@@ -4,6 +4,7 @@ files:
   - source: scripts/index.html
     destination: /usr/share/nginx/html/
     overwrite: true
+file_exists_behavior: OVERWRITE
 hooks:
   AfterInstall:
     - location: scripts/restart_script.sh
