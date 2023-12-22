@@ -291,24 +291,15 @@ module "CodePipeline" {
       output_artifacts= [ "SourceArtifact" ]
       run_order= 1
       configuration= {
-        ConnectionArn= null
-        FullRepositoryId= null
-        RepositoryName= null
-        BranchName= null
-        S3Bucket= null
-        S3ObjectKey= null
         Owner= "sikandarqaisar"
         Repo= "task"
         PollForSourceChanges= true
         Branch= "main"
 #        OAuthToken= "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"
-        OAuthToken= "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"
+        OAuthToken= "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"
       }
     }
   ]
-  BUILD_PROJECT= []
-  BUILD_APPROVAL= []
-  BUILD_ACTION= []
   CODEDEPLOY_APPLICATION= [
     {
       compute_platform= "Server"
