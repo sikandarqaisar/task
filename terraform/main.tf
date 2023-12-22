@@ -354,6 +354,7 @@ module "CodePipeline" {
     }
   ]
 }
-output "codedeploy"{
-  value = module.CodePipeline.CODE_DEPLOY_DEPLOYMENT_GROUP_ARN
+
+output "ALB_URL"{
+  value = module.ALB.APPLICATION_LOAD_BALANCER_DNS_NAME
 }
